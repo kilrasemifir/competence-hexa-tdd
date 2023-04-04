@@ -24,7 +24,7 @@ class CompetenceAccessiblesTest {
 
     CompetenceCRUD competenceCRUD;
     PersonneCRUD personneCRUD;
-    GestionNiveauCompetenceV1 gestion;
+    GestionNiveauCompetenceService gestion;
 
     @BeforeAll
     void init(){
@@ -32,7 +32,7 @@ class CompetenceAccessiblesTest {
         personneCRUD = Mockito.mock(PersonneCRUD.class);
         Mockito.when(competenceCRUD.findAll()).thenReturn(competences);
         Mockito.when(personneCRUD.findById("1")).thenReturn(PERSONNE_JAVA);
-        gestion = new GestionNiveauCompetenceV1(competenceCRUD, personneCRUD);
+        gestion = new GestionNiveauCompetenceService(competenceCRUD, personneCRUD);
     }
 
 

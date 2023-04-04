@@ -10,12 +10,12 @@ import fr.kira.formation.spring.hexagonal.competences.usecases.PersonneConnaissa
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonneConnaissantCompetenceImpl implements PersonneConnaissantCompetence {
+public class PersonneConnaissantCompetenceService implements PersonneConnaissantCompetence {
 
     private final PersonneCRUD personneCRUD;
     private final CompetenceCRUD competenceCRUD;
 
-    public PersonneConnaissantCompetenceImpl(PersonneCRUD personneCRUD, CompetenceCRUD competenceCRUD) {
+    public PersonneConnaissantCompetenceService(PersonneCRUD personneCRUD, CompetenceCRUD competenceCRUD) {
         this.personneCRUD = personneCRUD;
         this.competenceCRUD = competenceCRUD;
     }

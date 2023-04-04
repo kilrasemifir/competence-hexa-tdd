@@ -3,7 +3,7 @@ package fr.kira.formation.spring.hexagonal.competences.usecases;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
 import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
-import fr.kira.formation.spring.hexagonal.competences.usecases.impl.PersonneConnaissantCompetenceImpl;
+import fr.kira.formation.spring.hexagonal.competences.usecases.impl.PersonneConnaissantCompetenceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ class PersonneConnaissantCompetenceTest {
         Mockito.when(personneCRUD.findAll()).thenReturn(PERSONNES);
         competenceCRUD = Mockito.mock(CompetenceCRUD.class);
         Mockito.when(competenceCRUD.findById("1")).thenReturn(JAVA);
-        service = new PersonneConnaissantCompetenceImpl(personneCRUD, competenceCRUD);
+        service = new PersonneConnaissantCompetenceService(personneCRUD, competenceCRUD);
     }
 
     @Test

@@ -5,6 +5,7 @@ import fr.kira.formation.spring.hexagonal.competences.PersonneData;
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
 import fr.kira.formation.spring.hexagonal.competences.models.NiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
+import fr.kira.formation.spring.hexagonal.competences.models.Validation;
 import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
 import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 import fr.kira.formation.spring.hexagonal.competences.usecases.impl.ValidationParLesTestsService;
@@ -23,12 +24,14 @@ class ValidationParLesTestsTest {
     PersonneCRUD personneCRUD;
     CompetenceCRUD competenceCRUD;
     ValidationParLesTests service;
-    Personne personne = new Personne("","", new ArrayList<>());
+    Personne personne = new Personne("cible", "","", new ArrayList<>());
+    Personne validateur = new Personne("validateur", "","", new ArrayList<>());
 
     @BeforeEach
     void setUp(){
         personneCRUD = Mockito.mock(PersonneCRUD.class);
-        Mockito.when(personneCRUD.findById("1")).thenReturn(personne);
+        Mockito.when(personneCRUD.findById("cible")).thenReturn(personne);
+        Mockito.when(personneCRUD.findById("validateur")).thenReturn(validateur);
         competenceCRUD = Mockito.mock(CompetenceCRUD.class);
         Mockito.when(competenceCRUD.findById("1")).thenReturn(CompetenceData.JAVA);
         service = new ValidationParLesTestsService(personneCRUD, competenceCRUD);
@@ -38,7 +41,7 @@ class ValidationParLesTestsTest {
     @DisplayName("Si la personne ne possède pas encore le niveau de compétence, alors lui donne un niveau 5")
     void validationNiveau5(){
         Competence comp = CompetenceData.JAVA;
-        service.validerCompetence("1", comp.getId());
+        service.validerCompetence("cible", comp.getId(), "validateur");
         NiveauCompetence niveau = personne.findNiveauCompetence(comp.getId()).orElseThrow();
         assertEquals(5,niveau.getNiveau());
     }
@@ -48,7 +51,7 @@ class ValidationParLesTestsTest {
     void validationNiveau5Inferieur(){
         Competence comp = CompetenceData.JAVA;
         personne.getNiveauCompetences().add(new NiveauCompetence(comp, 4));
-        service.validerCompetence("1", comp.getId());
+        service.validerCompetence("cible", comp.getId(), "validateur");
         NiveauCompetence niveau = personne.findNiveauCompetence(comp.getId()).orElseThrow();
         assertEquals(5,niveau.getNiveau());
     }
@@ -58,8 +61,18 @@ class ValidationParLesTestsTest {
     void validationNiveau5Superieur(){
         Competence comp = CompetenceData.JAVA;
         personne.getNiveauCompetences().add(new NiveauCompetence(comp, 6));
-        service.validerCompetence("1", comp.getId());
+        service.validerCompetence("cible", comp.getId(), "validateur");
         NiveauCompetence niveau = personne.findNiveauCompetence(comp.getId()).orElseThrow();
         assertEquals(6,niveau.getNiveau());
+    }
+
+    @Test
+    @DisplayName("Le validateur doit être ajouté à la liste des validateurs de la compétence")
+    void validationAjoutValidateur(){
+        Competence comp = CompetenceData.JAVA;
+        service.validerCompetence("cible", comp.getId(), "validateur");
+        NiveauCompetence niveau = personne.findNiveauCompetence(comp.getId()).orElseThrow();
+        Validation validation = niveau.getValidations().stream().filter(v -> v.getValidateur().getId().equals("validateur")).findFirst().orElseThrow();
+        assertEquals(CompetenceData.JAVA.getId(), validation.getIdCompetence());
     }
 }

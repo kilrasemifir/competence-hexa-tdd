@@ -16,6 +16,13 @@ public class Personne extends Entity  {
     private String prenom;
     private List<NiveauCompetence> niveauCompetences = new ArrayList<>();
 
+    public Personne(String id, String nom, String prenom, List<NiveauCompetence> niveauCompetences) {
+        super(id);
+        this.nom = nom;
+        this.prenom = prenom;
+        this.niveauCompetences = niveauCompetences;
+    }
+
     public Optional<NiveauCompetence> findNiveauCompetence(String idCompetence) {
         return niveauCompetences.stream()
                 .filter(niveauCompetence -> niveauCompetence.getCompetence().getId().equals(idCompetence))

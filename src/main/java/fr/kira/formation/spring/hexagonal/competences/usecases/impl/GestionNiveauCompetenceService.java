@@ -11,12 +11,12 @@ import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionNiveauCompetenceV1 implements GestionNiveauCompetence {
+public class GestionNiveauCompetenceService implements GestionNiveauCompetence {
 
     private final CompetenceCRUD competenceCRUD;
     private final PersonneCRUD personneCRUD;
 
-    public GestionNiveauCompetenceV1(CompetenceCRUD competenceCRUD, PersonneCRUD personneCRUD) {
+    public GestionNiveauCompetenceService(CompetenceCRUD competenceCRUD, PersonneCRUD personneCRUD) {
         this.competenceCRUD = competenceCRUD;
         this.personneCRUD = personneCRUD;
     }
@@ -28,6 +28,7 @@ public class GestionNiveauCompetenceV1 implements GestionNiveauCompetence {
         List<NiveauCompetence> niveaux = personne.getNiveauCompetences();
         List<Competence> result = constructionCompetencesAvecPrerequis(competences, niveaux);
         return result;
+
     }
 
     private static List<Competence> constructionCompetencesAvecPrerequis(List<Competence> competences, List<NiveauCompetence> niveaux) {
