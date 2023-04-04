@@ -84,17 +84,4 @@ class GestionNiveauCompetenceV1Test {
         assertFalse(results.contains(DOT_NET_CORE));
     }
 
-//    // TODO data (competences, personne, niveaucompetence, prerequis)
-//    // TODO si personne a prerequis, alors retour de la comp
-//    // TODO sinon pas de retour de la comp
-//    @Test
-//    @DisplayName("Doit retourner les compétences dont l'utilisateur à les prérequis")
-//    void aPrerequis() {
-//    }
-//
-//    @Test
-//    @DisplayName("Ne doit pas retourner les compétences dont l'utilisateur n'a pas les prérequis")
-//    void naPasPrerequis(){
-//
-//    }
 }
