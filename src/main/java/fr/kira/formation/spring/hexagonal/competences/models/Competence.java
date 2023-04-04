@@ -20,4 +20,6 @@ public class Competence extends Entity {
         this.description = description;
         this.prerequis = prerequis;
     }
+
+    private String validationTestUrl;
 }

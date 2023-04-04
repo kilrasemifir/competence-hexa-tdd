@@ -4,9 +4,9 @@ import fr.kira.formation.spring.hexagonal.competences.models.Competence;
 import fr.kira.formation.spring.hexagonal.competences.models.NiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.models.Prerequis;
-import fr.kira.formation.spring.hexagonal.competences.usecases.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
 import fr.kira.formation.spring.hexagonal.competences.usecases.GestionNiveauCompetence;
-import fr.kira.formation.spring.hexagonal.competences.usecases.PersonneCRUD;
+import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,8 @@
 package fr.kira.formation.spring.hexagonal.competences.usecases;
 
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
+import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 import fr.kira.formation.spring.hexagonal.competences.usecases.impl.PersonneConnaissantCompetenceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static fr.kira.formation.spring.hexagonal.competences.CompetenceData.*;
+import static fr.kira.formation.spring.hexagonal.competences.PersonneData.*;
 
 class PersonneConnaissantCompetenceTest {
 

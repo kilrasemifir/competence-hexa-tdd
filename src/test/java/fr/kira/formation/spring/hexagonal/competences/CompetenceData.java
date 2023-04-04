@@ -18,19 +18,6 @@ public class CompetenceData {
     public static Prerequis DOT_NET_C_SHARP = new Prerequis(DOT_NET_CORE, 5, C_SHARP, 5);
 
 
-    public static Personne PERSONNE_VIDE = new Personne("vide","vide",List.of());
-
-    public static Personne PERSONNE_JAVA = new Personne("Doe","John", List.of(
-            new NiveauCompetence(JAVA, 6)
-    ));
-
-    public static Personne PERSONNE_JAVA_INF = new Personne("","",List.of(
-            new NiveauCompetence(JAVA, 4)
-    ));
-
-    public static List<Personne> PERSONNES = List.of(
-        PERSONNE_VIDE, PERSONNE_JAVA, PERSONNE_JAVA_INF
-    );
 
     public static List<Competence> competences = List.of(
             JAVA,

@@ -1,4 +1,4 @@
-package fr.kira.formation.spring.hexagonal.competences.usecases;
+package fr.kira.formation.spring.hexagonal.competences.ports;
 
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
 

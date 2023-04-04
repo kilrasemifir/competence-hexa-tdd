@@ -1,8 +1,8 @@
 package fr.kira.formation.spring.hexagonal.competences.usecases.impl;
 
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
-import fr.kira.formation.spring.hexagonal.competences.usecases.CompetenceCRUD;
-import fr.kira.formation.spring.hexagonal.competences.usecases.PersonneCRUD;
+import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static fr.kira.formation.spring.hexagonal.competences.CompetenceData.*;
+import static fr.kira.formation.spring.hexagonal.competences.PersonneData.*;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
