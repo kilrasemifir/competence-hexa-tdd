@@ -75,4 +75,12 @@ class ValidationParLesTestsTest {
         Validation validation = niveau.getValidations().stream().filter(v -> v.getValidateur().getId().equals("validateur")).findFirst().orElseThrow();
         assertEquals(CompetenceData.JAVA.getId(), validation.getIdCompetence());
     }
+
+    @Test
+    @DisplayName("Si la personne n'est pas un manager, alors retourné une erreur")
+    void validationManager(){
+        Competence comp = CompetenceData.JAVA;
+        validateur.setManager(false);
+        assertThrows(RuntimeException.class, () -> service.validerCompetence("cible", comp.getId(), "validateur"));
+    }
 }

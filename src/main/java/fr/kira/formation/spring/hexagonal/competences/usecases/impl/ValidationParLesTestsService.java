@@ -24,6 +24,9 @@ public class ValidationParLesTestsService implements ValidationParLesTests {
     public void validerCompetence(String idPersonne, String idCompetence, String idValidateur) {
         Personne personne = this.personneCRUD.findById(idPersonne);
         Personne validateur = this.personneCRUD.findById(idValidateur);
+        if (!validateur.isManager()) {
+            throw new RuntimeException("Le valideur n'est pas un manager.");
+        }
         Competence competence = this.competenceCRUD.findById(idCompetence);
         Optional<NiveauCompetence> niveau = personne.findNiveauCompetence(idCompetence);
         if (niveau.isPresent()){

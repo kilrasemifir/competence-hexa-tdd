@@ -14,6 +14,7 @@ import java.util.Optional;
 public class Personne extends Entity  {
     private String nom;
     private String prenom;
+    private boolean isManager = false;
     private List<NiveauCompetence> niveauCompetences = new ArrayList<>();
 
     public Personne(String id, String nom, String prenom, List<NiveauCompetence> niveauCompetences) {

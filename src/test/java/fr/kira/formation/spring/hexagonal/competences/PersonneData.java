@@ -8,13 +8,13 @@ import static fr.kira.formation.spring.hexagonal.competences.CompetenceData.*;
 
 public class PersonneData {
 
-    public static Personne PERSONNE_VIDE = new Personne("vide","vide", List.of());
+    public static Personne PERSONNE_VIDE = new Personne("vide","vide","vide", List.of());
 
-    public static Personne PERSONNE_JAVA = new Personne("Doe","John", List.of(
+    public static Personne PERSONNE_JAVA = new Personne("java","Doe","John", List.of(
             new NiveauCompetence(JAVA, 6)
     ));
 
-    public static Personne PERSONNE_JAVA_INF = new Personne("","",List.of(
+    public static Personne PERSONNE_JAVA_INF = new Personne("java_inf","","",List.of(
             new NiveauCompetence(JAVA, 4)
     ));
 
