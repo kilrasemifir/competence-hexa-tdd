@@ -8,10 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Competence extends Entity {
     private String nom;
     private String description;
     private List<Prerequis> prerequis = new ArrayList<>();
+
+    public Competence(String id, String nom, String description, List<Prerequis> prerequis) {
+        super(id);
+        this.nom = nom;
+        this.description = description;
+        this.prerequis = prerequis;
+    }
 }

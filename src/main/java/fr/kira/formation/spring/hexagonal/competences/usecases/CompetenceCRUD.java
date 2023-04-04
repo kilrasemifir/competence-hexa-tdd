@@ -11,4 +11,6 @@ public interface CompetenceCRUD {
      * @return liste des compétences
      */
     List<Competence> findAll();
+
+    Competence findById(String id);
 }
