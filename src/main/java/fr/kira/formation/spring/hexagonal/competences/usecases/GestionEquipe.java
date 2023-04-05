@@ -9,4 +9,6 @@ import fr.kira.formation.spring.hexagonal.competences.models.Equipe;
 public interface GestionEquipe {
     Equipe creationEquipe(String nomEquipe);
     void ajouterPersonneAEquipe(String idPersonne, String idEquipe);
+
+    void supprimerPersonneDeEquipe(String idPersonne, String idEquipe);
 }

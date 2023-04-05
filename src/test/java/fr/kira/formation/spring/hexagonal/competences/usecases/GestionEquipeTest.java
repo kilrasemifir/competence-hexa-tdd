@@ -60,4 +60,20 @@ class GestionEquipeTest {
         Mockito.verify(equipeCRUD).sauvegarder(equipe);
     }
 
+    @Test
+    @DisplayName("Lors de la suppression d'un membre, le membres n'est plus dans la liste des membres")
+    void supprimerPersonneDeEquipe() {
+        equipe.getMembres().add(membre);
+        service.supprimerPersonneDeEquipe(membre.getId(), equipe.getId());
+        assertFalse(equipe.getMembres().contains(membre));
+    }
+
+    @Test
+    @DisplayName("Lors de la suppression d'un membre, l'équipe doit être sauvegardée")
+    void supprimerPersonneDeEquipeSauvegarde() {
+        equipe.getMembres().add(membre);
+        service.supprimerPersonneDeEquipe(membre.getId(), equipe.getId());
+        Mockito.verify(equipeCRUD).sauvegarder(equipe);
+    }
+
 }

@@ -27,4 +27,12 @@ public class GestionEquipeService implements GestionEquipe {
         equipe.getMembres().add(membre);
         this.equipeCRUD.sauvegarder(equipe);
     }
+
+    @Override
+    public void supprimerPersonneDeEquipe(String idPersonne, String idEquipe) {
+        Personne membre = this.personneCRUD.findById(idPersonne);
+        Equipe equipe = this.equipeCRUD.findById(idEquipe);
+        equipe.getMembres().remove(membre);
+        this.equipeCRUD.sauvegarder(equipe);
+    }
 }
