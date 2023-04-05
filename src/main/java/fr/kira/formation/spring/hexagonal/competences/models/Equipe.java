@@ -16,4 +16,9 @@ public class Equipe extends Entity  {
     public Equipe(String nom) {
         this.nom = nom;
     }
+
+    public Equipe(String id, String nom) {
+        super(id);
+        this.nom = nom;
+    }
 }
