@@ -35,6 +35,7 @@ class ValidationParLesTestsTest {
         competenceCRUD = Mockito.mock(CompetenceCRUD.class);
         Mockito.when(competenceCRUD.findById("1")).thenReturn(CompetenceData.JAVA);
         service = new ValidationParLesTestsService(personneCRUD, competenceCRUD);
+        validateur.setManager(true);
     }
 
     @Test

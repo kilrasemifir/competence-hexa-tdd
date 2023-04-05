@@ -8,6 +8,8 @@ import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
 import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
 import fr.kira.formation.spring.hexagonal.competences.usecases.ValidationParLesPairs;
 
+import java.util.Optional;
+
 public class ValidationParLesPairsService implements ValidationParLesPairs {
 
     private final PersonneCRUD personneCRUD;
@@ -28,8 +30,9 @@ public class ValidationParLesPairsService implements ValidationParLesPairs {
     }
 
     private static void validationCible(String idCompetence, int niveau, Personne cible, Competence competence, Personne validateur) {
-        if (cible.findNiveauCompetence(idCompetence).isPresent()) {
-            NiveauCompetence niveauComp = cible.findNiveauCompetence(idCompetence).get();
+        Optional<NiveauCompetence> optionalNiveau = cible.findNiveauCompetence(idCompetence);
+        if (optionalNiveau.isPresent()) {
+            NiveauCompetence niveauComp = optionalNiveau.get();
             if (niveauComp.getNiveau() < niveau) {
                 niveauComp.setNiveau(niveau);
                 niveauComp.getValidations().add(new Validation(validateur, idCompetence, niveau));

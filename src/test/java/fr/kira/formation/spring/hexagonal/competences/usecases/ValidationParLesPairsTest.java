@@ -47,6 +47,16 @@ class ValidationParLesPairsTest {
     }
 
     @Test
+    @DisplayName("Si la cible possède un niveau inferieur a la demande, le validateur a un niveau superieur a la demande, alors la cible gagne le niveau demandé")
+    void validationCompetenceInferieur() {
+        validateur.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, 7));
+        cible.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, 5));
+        service.validerCompetence("cible", "validateur", "1", 6);
+        NiveauCompetence niveau = cible.findNiveauCompetence(CompetenceData.JAVA.getId()).orElseThrow();
+        assertEquals(6, niveau.getNiveau());
+    }
+
+    @Test
     @DisplayName("Si la cible possède déjà un niveau superieur a la demande, ne rien faire")
     void validationCompetenceSuperieur() {
         validateur.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, 7));
@@ -59,8 +69,19 @@ class ValidationParLesPairsTest {
 
     @Test
     @DisplayName("Si le validateur n'a pas le niveau demandé, retourné une erreur")
-    void validationCompetenceInferieur() {
+    void validationCompetenceValidateurInferieur() {
         validateur.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, 5));
+        NiveauCompetence niveauCible = cible.findNiveauCompetence(CompetenceData.JAVA.getId()).orElse(null);
+        assertThrows(RuntimeException.class, ()-> {
+            service.validerCompetence("cible", "validateur", "1", 6);
+            assertNull(niveauCible);
+        });
+    }
+
+    @Test
+    @DisplayName("Si le validateur n'a pas le niveau demandé, retourné une erreur")
+    void validationCompetenceInferieur2() {
+        validateur.setNiveauCompetences(List.of());
         NiveauCompetence niveauCible = cible.findNiveauCompetence(CompetenceData.JAVA.getId()).orElse(null);
         assertThrows(RuntimeException.class, ()-> {
             service.validerCompetence("cible", "validateur", "1", 6);
