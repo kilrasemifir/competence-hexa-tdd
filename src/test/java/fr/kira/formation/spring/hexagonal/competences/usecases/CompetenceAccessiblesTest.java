@@ -1,8 +1,8 @@
-package fr.kira.formation.spring.hexagonal.competences.usecases.impl;
+package fr.kira.formation.spring.hexagonal.competences.usecases;
 
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
-import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
-import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.PersonneCRUD;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

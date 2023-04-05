@@ -4,12 +4,14 @@ import fr.kira.formation.spring.hexagonal.competences.CompetenceData;
 import fr.kira.formation.spring.hexagonal.competences.models.NiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.models.Validation;
-import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
-import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
-import fr.kira.formation.spring.hexagonal.competences.usecases.impl.ValidationParLesPairsService;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree.ValidationParLesPairs;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.PersonneCRUD;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -37,10 +39,12 @@ class ValidationParLesPairsTest {
         service = new ValidationParLesPairsService(personneCRUD, competenceCRUD);
     }
 
-    @Test
+
     @DisplayName("Si la cible n'a pas encore de niveau, le validateur a un niveau superieur a la demande, alors la cible gagne le niveau demandé")
-    void validationCompetence() {
-        validateur.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, 7));
+    @ParameterizedTest
+    @ValueSource(ints = {6, 7, 8, 9, 10})
+    void validationCompetence(int niveauValidateur) {
+        validateur.getNiveauCompetences().add(new NiveauCompetence(CompetenceData.JAVA, niveauValidateur));
         service.validerCompetence("cible", "validateur", "1", 6);
         NiveauCompetence niveau = cible.findNiveauCompetence(CompetenceData.JAVA.getId()).orElseThrow();
         assertEquals(6, niveau.getNiveau());

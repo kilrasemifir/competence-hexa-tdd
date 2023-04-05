@@ -1,12 +1,12 @@
-package fr.kira.formation.spring.hexagonal.competences.usecases.impl;
+package fr.kira.formation.spring.hexagonal.competences.usecases;
 
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
 import fr.kira.formation.spring.hexagonal.competences.models.NiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.models.Prerequis;
-import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
-import fr.kira.formation.spring.hexagonal.competences.usecases.GestionNiveauCompetence;
-import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree.GestionNiveauCompetence;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.PersonneCRUD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,7 @@ public class GestionNiveauCompetenceService implements GestionNiveauCompetence {
         List<Competence> competences = this.competenceCRUD.findAll();
         Personne personne = this.personneCRUD.findById(idPersonne);
         List<NiveauCompetence> niveaux = personne.getNiveauCompetences();
-        List<Competence> result = constructionCompetencesAvecPrerequis(competences, niveaux);
-        return result;
+        return constructionCompetencesAvecPrerequis(competences, niveaux);
 
     }
 
@@ -40,7 +39,6 @@ public class GestionNiveauCompetenceService implements GestionNiveauCompetence {
             else {
                 verificationDesPrerequis(niveaux, result, comp);
             }
-
         }
         return result;
     }

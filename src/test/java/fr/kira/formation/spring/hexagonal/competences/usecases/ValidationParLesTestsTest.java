@@ -1,14 +1,13 @@
 package fr.kira.formation.spring.hexagonal.competences.usecases;
 
 import fr.kira.formation.spring.hexagonal.competences.CompetenceData;
-import fr.kira.formation.spring.hexagonal.competences.PersonneData;
 import fr.kira.formation.spring.hexagonal.competences.models.Competence;
 import fr.kira.formation.spring.hexagonal.competences.models.NiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.models.Validation;
-import fr.kira.formation.spring.hexagonal.competences.ports.CompetenceCRUD;
-import fr.kira.formation.spring.hexagonal.competences.ports.PersonneCRUD;
-import fr.kira.formation.spring.hexagonal.competences.usecases.impl.ValidationParLesTestsService;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree.ValidationParLesTests;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.CompetenceCRUD;
+import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.PersonneCRUD;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

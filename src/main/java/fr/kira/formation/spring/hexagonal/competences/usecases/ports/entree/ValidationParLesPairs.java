@@ -1,4 +1,4 @@
-package fr.kira.formation.spring.hexagonal.competences.usecases;
+package fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree;
 
 public interface ValidationParLesPairs {
 
