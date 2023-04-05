@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/kilrasemifir/competence-hexa-tdd/compare/v1.1.0...v1.2.0) (2023-04-05)
+
+
+### Features
+
+* ajout de l'infra et api pour les equipes ([d5a0fa7](https://github.com/kilrasemifir/competence-hexa-tdd/commit/d5a0fa7f851d738bfca535cce377120e96fbf541))
+* **API:** ajout des routes de validations ([a0d6b90](https://github.com/kilrasemifir/competence-hexa-tdd/commit/a0d6b907ab55996b9044d452afccfc747aef2265))
+* **API:** ajout GET /{idCompetence}/personnes ([d6ffada](https://github.com/kilrasemifir/competence-hexa-tdd/commit/d6ffada5eb818a68a00b97d03bb83cf11a944898))
+* **API:** ajout GET personnes/{personneId}/competences/accessibles ([6eb1012](https://github.com/kilrasemifir/competence-hexa-tdd/commit/6eb10127539c5ee7880c32bbfe2176fc69760d4b))
+* **API:** ajout POST /personnes ([33d2aa6](https://github.com/kilrasemifir/competence-hexa-tdd/commit/33d2aa6a9a64eee04e287946e55376501ead332f))
+
 ## 1.1.0 (2023-04-05)
 
 
