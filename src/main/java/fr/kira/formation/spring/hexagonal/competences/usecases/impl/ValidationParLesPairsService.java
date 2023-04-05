@@ -26,7 +26,7 @@ public class ValidationParLesPairsService implements ValidationParLesPairs {
         Competence competence = competenceCRUD.findById(idCompetence);
         verificationValideur(idCompetence, niveau, validateur);
         validationCible(idCompetence, niveau, cible, competence, validateur);
-        personneCRUD.save(cible);
+        personneCRUD.sauvegarder(cible);
     }
 
     private static void validationCible(String idCompetence, int niveau, Personne cible, Competence competence, Personne validateur) {

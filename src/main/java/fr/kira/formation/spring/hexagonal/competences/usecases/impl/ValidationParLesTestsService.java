@@ -40,6 +40,6 @@ public class ValidationParLesTestsService implements ValidationParLesTests {
             personne.getNiveauCompetences().add(niveauCompetence);
             niveauCompetence.getValidations().add(new Validation(validateur, idCompetence, 5));
         }
-        this.personneCRUD.save(personne);
+        this.personneCRUD.sauvegarder(personne);
     }
 }

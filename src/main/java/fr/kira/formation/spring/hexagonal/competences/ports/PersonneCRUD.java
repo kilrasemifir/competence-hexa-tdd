@@ -8,5 +8,5 @@ public interface PersonneCRUD {
     Personne findById(String id);
     List<Personne> findAll();
 
-    void save(Personne personne);
+    Personne sauvegarder(Personne personne);
 }
