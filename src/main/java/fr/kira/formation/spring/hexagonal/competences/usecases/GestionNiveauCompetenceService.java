@@ -7,6 +7,7 @@ import fr.kira.formation.spring.hexagonal.competences.models.Prerequis;
 import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.CompetenceCRUD;
 import fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree.GestionNiveauCompetence;
 import fr.kira.formation.spring.hexagonal.competences.usecases.ports.sortie.PersonneCRUD;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class GestionNiveauCompetenceService implements GestionNiveauCompetence {
     }
 
     @Override
+    @Transactional
     public List<Competence> competenceAccessibles(String idPersonne) {
         List<Competence> competences = this.competenceCRUD.findAll();
         Personne personne = this.personneCRUD.findById(idPersonne);
