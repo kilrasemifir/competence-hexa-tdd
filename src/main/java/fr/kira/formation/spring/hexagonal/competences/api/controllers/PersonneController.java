@@ -4,10 +4,7 @@ import fr.kira.formation.spring.hexagonal.competences.api.adapters.PersonneAPIAd
 import fr.kira.formation.spring.hexagonal.competences.api.dto.PersonneCreationDTO;
 import fr.kira.formation.spring.hexagonal.competences.models.Personne;
 import fr.kira.formation.spring.hexagonal.competences.usecases.ports.entree.GestionPersonne;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/personnes")
@@ -23,4 +20,5 @@ public class PersonneController {
     public void creationPersonne(@RequestBody PersonneCreationDTO dto) {
         adapter.creationPersonne(dto);
     }
+
 }
